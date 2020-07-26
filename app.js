@@ -1,6 +1,7 @@
 console.log('started')
 const todo=document.getElementById('todo')
 const todoList=document.getElementById('todoList')
+let i =0;
 function addTodo(){
     // get text from input and tyhe append a todo in list
     if(todo.value!==""){
@@ -29,6 +30,7 @@ function addTodo(){
 
         btnEdit.appendChild(btnEdidImg)
         li.appendChild(btnEdit)
+        i++
     }else{
         todo.focus()
         document.getElementById('message').innerHTML='please insert value'
@@ -45,13 +47,15 @@ function deleteTodo(e){
 }
 
 function deleteAll(e){
-    todoList.innerHTML=""
-    var noTodo=document.getElementsByTagName('li')
-    var li=document.createElement('li')
-    var liText=document.createTextNode("You have no remaing todos")
-    li.appendChild(liText)
-    li.setAttribute('class','list-group-item text-success')
-    todoList.appendChild(li)
+    if(i>0){
+        todoList.innerHTML=""
+        var noTodo=document.getElementsByTagName('li')
+        var li=document.createElement('li')
+        var liText=document.createTextNode("You have no remaing todos")
+        li.appendChild(liText)
+        li.setAttribute('class','list-group-item text-success')
+        todoList.appendChild(li)
+    }
 }
 function editTodo(e){
     var val=e.parentNode.firstChild.nodeValue
