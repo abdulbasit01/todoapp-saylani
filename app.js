@@ -31,7 +31,11 @@ function addTodo(){
         li.appendChild(btnEdit)
     }else{
         todo.focus()
+        document.getElementById('message').innerHTML='please insert value'
         todo.title="input field not be empty"
+        setTimeout(()=>{
+            document.getElementById('message').innerHTML=""
+        },750)
         
     }
 }
@@ -53,7 +57,9 @@ function editTodo(e){
     var val=e.parentNode.firstChild.nodeValue
     var edit=prompt('enter value',val)
     console.log(edit)
-    if(edit!==" " || edit!==null){
+    if(edit.length > 0 ){
         e.parentNode.firstChild.nodeValue=edit
+    }else{
+        alert('value not updated')
     }
 }
