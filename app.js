@@ -49,11 +49,11 @@ function deleteTodo(e){
 function deleteAll(e){
     if(i>0){
         todoList.innerHTML=""
-        var noTodo=document.getElementsByTagName('li')
         var li=document.createElement('li')
         var liText=document.createTextNode("You have no remaing todos")
         li.appendChild(liText)
         li.setAttribute('class','list-group-item text-success')
+        li.setAttribute('style','text-align:center')
         todoList.appendChild(li)
     }
 }
